@@ -1,0 +1,15 @@
+table, th, td {
+  border: 1px solid black;
+  padding:20px;
+}
+
+
+ 
+header h1{
+    color: Black;
+    border: 8px solid black;
+    padding: 6px;
+    display: inline-block;
+    border-radius: 30px;
+    align-text:center;
+}
