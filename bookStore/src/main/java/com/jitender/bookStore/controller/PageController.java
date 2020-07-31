@@ -1,5 +1,7 @@
 package com.jitender.bookStore.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,6 +45,19 @@ public class PageController {
     	mv.addObject("userClickViewProduct", true);
 		return mv;
 	}
+    
+    @RequestMapping(value = "/book/category/{id}")
+	public ModelAndView BooksByCategoryName(@PathVariable("id") Long id) {
+    	System.out.println("Single Book page Loaded");
+    	ModelAndView mv = new ModelAndView("page");
+    	List<Book> list = bookDao.listofBookByCategory(id);
+    	mv.addObject("Books",list);
+    	mv.addObject("title","BookByCategory");
+    	mv.addObject("userClickHome", true);
+		return mv;
+	}
+    
+    
     
     @RequestMapping(value = "/about")
 	public ModelAndView about() {

@@ -7,7 +7,7 @@ import com.jitender.bookStore.model.Book;
 public interface BookDAO {
 
 	// save the record 
-//	Long save(Book book);
+	Long save(Book book);
 	
 	// get a single record
 	Book get(long id);
@@ -16,7 +16,7 @@ public interface BookDAO {
 	List<Book> list();
 	
 	// update the record
-//	void update(long id,Book book);
+	boolean update(Book book);
 	
 	// delete the record 
 //	void delete(long id); 	

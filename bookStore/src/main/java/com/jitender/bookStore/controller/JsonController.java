@@ -34,7 +34,7 @@ public class JsonController {
 		
 	}
 	
-	@RequestMapping("/books")
+	@RequestMapping("admin/all/books")
 	@ResponseBody
 	List<Book> BookList(){
 		return bookDao.list();
@@ -66,6 +66,14 @@ public class JsonController {
 			
 			List<Book> list = bookDao.homePageBooks();
 			return ResponseEntity.ok().body(list);
+	}
+	
+	@PostMapping("/newBook")
+	public ResponseEntity<?> addBook(@RequestBody Book book){
+		
+		     long id =  bookDao.save(book);
+		     return ResponseEntity.ok().body("Book created with id:" + id);
+		
 	}
 
 	

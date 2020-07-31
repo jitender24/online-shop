@@ -15,13 +15,13 @@ public class BookDaoImpl implements BookDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-/*
+
 	@Override
 	public Long save(Book book) {
-		// TODO Auto-generated method stub
-		return null;
+		  sessionFactory.getCurrentSession().persist(book);
+		  return book.getId(); 
 	}
-*/
+	
 	@Override
 	public Book get(long id) {
           Book book = sessionFactory.getCurrentSession().get(Book.class, id);
@@ -34,13 +34,9 @@ public class BookDaoImpl implements BookDAO {
 		return sessionFactory.getCurrentSession().createQuery("from Book").list();
 	}
 
-	/*
-	@Override
-	public void update(long id, Book book) {
-		// TODO Auto-generated method stub
 
-	}
 
+/*
 	@Override
 	public void delete(long id) {
 		// TODO Auto-generated method stub
@@ -49,15 +45,29 @@ public class BookDaoImpl implements BookDAO {
 */
 	@Override
 	public List<Book> homePageBooks(){
-		return sessionFactory.getCurrentSession().createQuery("from Book where category = 1", Book.class).list();
+		return sessionFactory.getCurrentSession().createQuery("from Book where categoryId = 1", Book.class).list();
 	}
 	
     @Override
     @Transactional
 	public List<Book> listofBookByCategory(long id) {
    
-	    List<Book> books = sessionFactory.getCurrentSession().createQuery("from Book b where b.category ="+id,Book.class).list();
+	    List<Book> books = sessionFactory.getCurrentSession().createQuery("from Book b where b.categoryId ="+id,Book.class).list();
 	    return books;
+	}
+
+	@Override
+	public boolean update(Book book) {
+		// TODO Auto-generated method stub
+		try {
+			sessionFactory.getCurrentSession().update(book);
+			return true;
+		  }
+		catch(Exception ex) {		
+			ex.printStackTrace();			
+		}		
+		return false;	
+		
 	}
 
 }

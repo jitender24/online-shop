@@ -3,6 +3,7 @@ package com.jitender.bookStore.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +23,7 @@ public class User {
 	private String email;
 	
 	@Column(name="contact_number")
-	private int contactNumber;
+	private String contactNumber;
 	
 	private String password;
 	
@@ -63,11 +64,11 @@ public class User {
 		this.email = email;
 	}
 
-	public int getContactNumber() {
+	public String getContactNumber() {
 		return contactNumber;
 	}
 
-	public void setContactNumber(int contactNumber) {
+	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
 
@@ -95,7 +96,7 @@ public class User {
 		this.role = role;
 	}
 	
-	@OneToOne(mappedBy="user", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy="user", cascade = CascadeType.ALL, fetch= FetchType.EAGER)
 	private Cart cart;
 
 	public Cart getCart() {

@@ -15,8 +15,7 @@
        <hr>
        <a href="#" class="btn btn-primary">Add to Cart</a>
        <a href="${contextRoot}/home" class="btn btn-warning"><span class="glyphicon glyphicon-home"></span>Continue Shopping</a>
-    
-        </a>
+      
        <hr>
        
        
