@@ -1,4 +1,4 @@
-package com.jitender.bookStore.dao;
+package com.jitender.bookStore.daoImp;
 
 import javax.transaction.Transactional;
 
@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jitender.bookStore.dao.UserDAO;
 import com.jitender.bookStore.model.Address;
 import com.jitender.bookStore.model.Cart;
 import com.jitender.bookStore.model.User;
@@ -19,6 +20,7 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public boolean addUser(User user) {
+		
 		try {
 			sessionFactory.getCurrentSession().save(user);
 			return true;
@@ -46,9 +48,7 @@ public class UserDaoImpl implements UserDAO {
 		try {
 			sessionFactory.getCurrentSession().persist(cart);
 			return true;
-		}
-
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
 			return false;
 		}
