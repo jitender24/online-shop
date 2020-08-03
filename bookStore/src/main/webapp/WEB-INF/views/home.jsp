@@ -66,7 +66,7 @@
 								<p class="card-text">${book.description}</p>
 							</div>
 							<div class="card-footer">
-								<a href="${contextRoot}/book/${book.id}"
+								<a href="${contextRoot}/books/${book.id}"
 									class="btn btn-primary btn-sm">View Product</a> <a
 									href="${contextRoot}/cart/add/${product.id}/product"
 									class="btn btn-success btn-sm"> <span
@@ -176,13 +176,13 @@
 				</div>
 
 			</div>
-			<!-- /.row -->
+
 
 		</div>
-		<!-- /.col-lg-9 -->
+
 
 	</div>
-	<!-- /.row -->
+
 
 </div>
 

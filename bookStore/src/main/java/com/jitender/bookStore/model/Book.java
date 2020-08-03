@@ -2,7 +2,6 @@ package com.jitender.bookStore.model;
 
 import java.math.BigDecimal;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,35 +10,36 @@ import javax.persistence.Id;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
-
-@Entity(name="Book")
+@Entity(name = "Book")
 public class Book {
-    
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@NotBlank(message = "please enter the Book Name!")
 	private String title;
+	
 	@NotBlank(message = "Please enter the Author Name!")
 	private String author;
+	
 	@NotBlank(message = "Please enter the Description!")
 	private String description;
-	
-	@Column(name="unit_price")
+
+	@Column(name = "unit_price")
 	private BigDecimal unitPrice;
-	
+
 	private boolean active;
-	@Min(value=1)
-	@Column(name="unit_in_stock")
+	@Min(value = 1)
+	@Column(name = "unit_in_stock")
 	private int unitInStock;
-	
-	@Column(name="image_url")
+
+	@Column(name = "image_url")
 	private String imageUrl;
-	
+
 	@Column(name = "category_id")
 	private Long categoryId;
- 
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -112,13 +112,4 @@ public class Book {
 		this.categoryId = categoryId;
 	}
 
-
-	
-	
-	
-	
-	
-	
-	
-	
 }

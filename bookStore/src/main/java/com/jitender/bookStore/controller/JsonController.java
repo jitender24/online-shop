@@ -17,64 +17,61 @@ import com.jitender.bookStore.dao.CategoryDAO;
 import com.jitender.bookStore.model.Book;
 import com.jitender.bookStore.model.BookCategory;
 
-
 @Controller
 @RequestMapping("/json")
 public class JsonController {
+
 	@Autowired
 	private CategoryDAO categoryDao;
+
 	@Autowired
 	private BookDAO bookDao;
-	
-	
+
 	@RequestMapping("/categories")
 	@ResponseBody
-	List <BookCategory> listOfBookst(){
+	List<BookCategory> listOfCategory() {
 		return categoryDao.categoryList();
-		
 	}
-	
-	@RequestMapping("admin/all/books")
+
+	@RequestMapping("/books")
 	@ResponseBody
-	List<Book> BookList(){
+	List<Book> BookList() {
 		return bookDao.list();
 	}
-	
-	@GetMapping("/singleBook/{id}")
-	public ResponseEntity<?> getBookById(@PathVariable("id") Long id){
+
+	@GetMapping("/books/{id}")
+	public ResponseEntity<?> getBookById(@PathVariable("id") Long id) {
 		Book singleBook = bookDao.get(id);
 		return ResponseEntity.ok(singleBook);
 	}
-	
-	@PostMapping("/newCategory")
-    public ResponseEntity<?> save(@RequestBody BookCategory category){
-    	  long id = categoryDao.addCategory(category);
-    	  return ResponseEntity.ok().body("Book created with id:" + id);
-    }
-	
-	@GetMapping("/book/category/{id}")
-	public ResponseEntity<?> getHomePageBooks(@PathVariable("id") Long id){
-		
-			
-			List<Book> list = bookDao.listofBookByCategory(id);
-			return ResponseEntity.ok().body(list);
-	}
-	
-	@GetMapping("/book/homepage")
-	public ResponseEntity<?> HomePageBooks(){
-		
-			
-			List<Book> list = bookDao.homePageBooks();
-			return ResponseEntity.ok().body(list);
-	}
-	
-	@PostMapping("/newBook")
-	public ResponseEntity<?> addBook(@RequestBody Book book){
-		
-		     long id =  bookDao.save(book);
-		     return ResponseEntity.ok().body("Book created with id:" + id);
-		
+
+	@PostMapping("/categories")
+	public ResponseEntity<?> save(@RequestBody BookCategory category) {
+		long id = categoryDao.addCategory(category);
+		return ResponseEntity.ok().body("Category created with id:" + id);
 	}
 
+	@GetMapping("categories/{id}/books")
+	public ResponseEntity<?> getHomePageBooks(@PathVariable("id") Long id) {
+
+		List<Book> list = bookDao.listofBookByCategory(id);
+		return ResponseEntity.ok().body(list);
+	}
+
+	/*
+	 * @GetMapping("/books/homepage") 
+	 * public ResponseEntity<?> HomePageBooks() {
+	 * 
+	 * List<Book> list = bookDao.homePageBooks(); return
+	 * ResponseEntity.ok().body(list); }
+	 */
 	
+   /*
+	@PostMapping("/books")
+	public ResponseEntity<?> addBook(@RequestBody Book book) {
+
+		long id = bookDao.save(book);
+		return ResponseEntity.ok().body("Book created with id:" + id);
+	}
+   */
 }

@@ -10,21 +10,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
-
 @Entity(name = "category")
 public class BookCategory {
-     @Id
-     @GeneratedValue(strategy=GenerationType.IDENTITY)
-     @Column(name="category_id")
-	 private Long  CategoryId;
-	
-	@Column(name="category_name")
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "category_id")
+	private Long CategoryId;
+
+	@Column(name = "category_name")
 	private String CategoryName;
-	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="categoryId")
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "categoryId")
 	private Set<Book> book;
- 
+
 	public Long getCategoryId() {
 		return CategoryId;
 	}
@@ -41,6 +40,4 @@ public class BookCategory {
 		CategoryName = categoryName;
 	}
 
-
-	
 }

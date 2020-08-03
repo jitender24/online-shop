@@ -117,7 +117,4 @@ public class Address {
 		this.billing = billing;
 	}
 	
-	
-	
-	
 }

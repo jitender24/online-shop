@@ -9,27 +9,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-@Entity(name="User_details")
+@Entity(name = "User_details")
 public class User {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@Column(name="first_name")
+
+	@Column(name = "first_name")
 	private String firstName;
-	@Column(name="last_name")
+	
+	@Column(name = "last_name")
 	private String lastName;
-	
+
 	private String email;
-	
-	@Column(name="contact_number")
+
+	@Column(name = "contact_number")
 	private String contactNumber;
-	
+
 	private String password;
-	
-	@Column(name="confirm_password")
+
+	@Column(name = "confirm_password")
 	private String confirmPassword;
-	
+
 	private String role;
 
 	public int getId() {
@@ -95,8 +96,8 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
-	@OneToOne(mappedBy="user", cascade = CascadeType.ALL, fetch= FetchType.EAGER)
+
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Cart cart;
 
 	public Cart getCart() {
@@ -106,9 +107,5 @@ public class User {
 	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
-	
-	
-	
-	
 
 }
