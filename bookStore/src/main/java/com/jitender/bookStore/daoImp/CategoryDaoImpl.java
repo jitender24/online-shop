@@ -19,11 +19,14 @@ public class CategoryDaoImpl implements CategoryDAO {
 
 	@Override
 	public List<BookCategory> categoryList() {
-		return sessionFactory.getCurrentSession().createQuery("from category", BookCategory.class).list();
+
+		return sessionFactory.getCurrentSession()
+				.createQuery("from category", BookCategory.class).list();
 	}
 
 	@Override
 	public Long addCategory(BookCategory category) {
+
 		sessionFactory.getCurrentSession().save(category);
 		return category.getCategoryId();
 	}

@@ -32,7 +32,7 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public boolean addAddress(Address address) {
-		// TODO Auto-generated method stub
+		
 		try {
 			sessionFactory.getCurrentSession().persist(address);
 			return true;
@@ -44,7 +44,7 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public boolean addCart(Cart cart) {
-		// TODO Auto-generated method stub
+	
 		try {
 			sessionFactory.getCurrentSession().persist(cart);
 			return true;

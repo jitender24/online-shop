@@ -62,7 +62,8 @@ public class BookDaoImpl implements BookDAO {
 	public List<Book> listofBookByCategory(long id) {
 
 		String Query = "from Book b where b.categoryId =";
-		List<Book> books = sessionFactory.getCurrentSession().createQuery(Query + id, Book.class).list();
+		List<Book> books = sessionFactory.getCurrentSession()
+								.createQuery(Query + id, Book.class).list();
 		return books;
 	}
 }

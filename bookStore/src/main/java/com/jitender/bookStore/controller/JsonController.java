@@ -30,23 +30,27 @@ public class JsonController {
 	@RequestMapping("/categories")
 	@ResponseBody
 	List<BookCategory> listOfCategory() {
+
 		return categoryDao.categoryList();
 	}
 
 	@RequestMapping("/books")
 	@ResponseBody
 	List<Book> BookList() {
+
 		return bookDao.list();
 	}
 
 	@GetMapping("/books/{id}")
 	public ResponseEntity<?> getBookById(@PathVariable("id") Long id) {
+
 		Book singleBook = bookDao.get(id);
 		return ResponseEntity.ok(singleBook);
 	}
 
 	@PostMapping("/categories")
 	public ResponseEntity<?> save(@RequestBody BookCategory category) {
+
 		long id = categoryDao.addCategory(category);
 		return ResponseEntity.ok().body("Category created with id:" + id);
 	}
@@ -59,19 +63,17 @@ public class JsonController {
 	}
 
 	/*
-	 * @GetMapping("/books/homepage") 
-	 * public ResponseEntity<?> HomePageBooks() {
+	 * @GetMapping("/books/homepage") public ResponseEntity<?> HomePageBooks() {
 	 * 
 	 * List<Book> list = bookDao.homePageBooks(); return
 	 * ResponseEntity.ok().body(list); }
 	 */
-	
-   /*
-	@PostMapping("/books")
-	public ResponseEntity<?> addBook(@RequestBody Book book) {
 
-		long id = bookDao.save(book);
-		return ResponseEntity.ok().body("Book created with id:" + id);
-	}
-   */
+	/*
+	 * @PostMapping("/books") public ResponseEntity<?> addBook(@RequestBody Book
+	 * book) {
+	 * 
+	 * long id = bookDao.save(book); return
+	 * ResponseEntity.ok().body("Book created with id:" + id); }
+	 */
 }

@@ -16,19 +16,16 @@ import com.jitender.bookStore.model.Book;
 
 @Controller
 public class HomeController {
-	
+
 	@Autowired
 	private CategoryDAO categoryDao;
-	
+
 	@Autowired
 	private BookDAO bookDao;
 
-	public HomeController() {
-		System.out.println("PageController()");
-	}
-
 	@RequestMapping(value = { "/", "/home", "/index" })
 	public ModelAndView index() {
+		
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "Home");
 		mv.addObject("categories", categoryDao.categoryList());
@@ -36,7 +33,6 @@ public class HomeController {
 		mv.addObject("userClickHome", true);
 		return mv;
 	}
-
 
 	@RequestMapping(value = "/about")
 	public ModelAndView about() {
@@ -46,7 +42,6 @@ public class HomeController {
 		mv.addObject("title", "About Us");
 		mv.addObject("userClickAbout", true);
 		return mv;
-		
 	}
 
 	@RequestMapping(value = "/contact")
